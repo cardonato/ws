@@ -17,7 +17,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>JAXWSServlet</servlet-name>
-		<url-pattern>/ws/*</url-pattern>
+		<url-pattern>/soapRest/*</url-pattern>
 	</servlet-mapping>
 	<session-config>
 		<session-timeout>5</session-timeout>
