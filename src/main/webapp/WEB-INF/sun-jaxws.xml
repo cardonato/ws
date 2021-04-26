@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime"
+	version="2.0">
+	<endpoint name="HelloWebService" implementation="ar.com.bna.ws.Hello"
+		url-pattern="/hello" />
+
+	<endpoint name="ChequesWebService" implementation="ar.com.bna.ws.ChequesService"
+		url-pattern="/chequesService" />
+		
+	<endpoint name="ChequesWebService" implementation="ar.com.bna.wsRest.ChequeSOAPRestController"
+		url-pattern="/chequesSR" />
+</endpoints>
