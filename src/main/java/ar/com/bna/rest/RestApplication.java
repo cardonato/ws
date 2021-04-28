@@ -13,8 +13,8 @@ public class RestApplication extends Application {
 		BeanConfig beanConfig = new BeanConfig();
         beanConfig.setVersion("1.0.0");
         beanConfig.setSchemes(new String[]{"http"});
-        beanConfig.setHost("http://localhost:9080/");
-        beanConfig.setBasePath("/soapRest/api");
+        beanConfig.setHost("localhost:9080");
+        beanConfig.setBasePath("soapRest/api");
         beanConfig.setResourcePackage(ChequeSOAPRestController.class.getPackage().getName());
         beanConfig.setTitle("Swagger Json para JAX-RS");
         beanConfig.setDescription("Documentacion Swagger para API REST (JAX-RS) Cheques");
