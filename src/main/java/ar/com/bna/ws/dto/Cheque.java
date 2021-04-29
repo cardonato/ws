@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(value="Cheque", description="Objeto Cheque")
 public class Cheque implements Serializable {
 
 	private static final long serialVersionUID = -4287876029481275359L;
