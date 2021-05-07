@@ -6,8 +6,10 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -20,6 +22,7 @@ import ar.com.bna.ws.service.ServicioCheques;
 import ar.gov.bna.ws.exception.CustomFault;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
@@ -67,9 +70,40 @@ public class ChequeSOAPRestController {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@ApiOperation(value = "agregarCheque", notes = "Agrega cheque", response = Cheque.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Cheque Agregado", response = Cheque.class) })
-	public Response agregarCheque(@WebParam(name="cheque") Cheque cheque) {
+	public Response agregarCheque(@WebParam(name="cheque") @ApiParam(name="cheque") Cheque cheque) {
 		ServicioCheques servicio = new ServicioCheques();
 		servicio.agregarCheque(cheque);
 		return Response.ok().entity(servicio.ultimo()).build();
+	}
+	
+	@WebMethod
+	
+	@PUT
+	@Path("/modificarCheque")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@ApiOperation(value = "modificarCheque", notes = "Modifica Cheque", response = Cheque.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Cheque Modificado", response = Cheque.class) })
+	public Response modificarCheque(@WebParam(name="cheque") @ApiParam(name="cheque") Cheque cheque) throws CustomFault {
+		ServicioCheques servicio = new ServicioCheques();
+		Cheque respuesta = servicio.modificarCheque(cheque);
+		return Response.ok().entity(respuesta).build();
+	}
+	
+	@WebMethod
+	
+	@DELETE
+	@Path("/eliminarCheque")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@ApiOperation(value = "eliminarCheque", notes = "Elimina Cheque", response = Cheque.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Cheque Eliminado", response = Cheque.class) })
+	public Response eliminarCheque(@WebParam(name="cheque") @ApiParam(name="cheque") Cheque cheque) throws CustomFault {
+		ServicioCheques servicio = new ServicioCheques();
+		try {
+			servicio.eliminarCheque(cheque.getId());
+			return Response.status(Status.OK).entity("Cheque con ID: " + cheque.getId() + "eliminado").build();
+		}
+		catch (CustomFault e) {
+			return Response.status(Status.NOT_FOUND).entity("No se encontro el Cheque").build();
+		}
 	}
 }

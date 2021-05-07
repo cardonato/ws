@@ -17,9 +17,11 @@ public class Cheque implements Serializable {
 	private String dniBeneficiario;
 	private String cmc7;
 	private Date fechaPago;
+	private Boolean modificado;
 
 	public Cheque() {
 		super();
+		modificado = false;
 	}
 
 	public Cheque(Long id, String idBanco, BigDecimal monto, String dniBeneficiario, String cmc7, Date fechaPago) {
@@ -30,6 +32,7 @@ public class Cheque implements Serializable {
 		this.dniBeneficiario = dniBeneficiario;
 		this.cmc7 = cmc7;
 		this.fechaPago = fechaPago;
+		modificado = false;
 	}
 
 	public Long getId() {
@@ -78,6 +81,14 @@ public class Cheque implements Serializable {
 
 	public void setFechaPago(Date fechaPago) {
 		this.fechaPago = fechaPago;
+	}
+
+	public Boolean getModificado() {
+		return modificado;
+	}
+
+	public void setModificado(Boolean modificado) {
+		this.modificado = modificado;
 	}
 
 }

@@ -1,38 +1,31 @@
 package ar.com.bna.rest;
 
-import org.eclipse.persistence.jaxb.MarshallerProperties;
-import org.eclipse.persistence.jaxb.BeanValidationMode;
-import org.glassfish.jersey.moxy.json.MoxyJsonConfig;
-import org.glassfish.jersey.moxy.json.MoxyJsonFeature;
-import org.glassfish.jersey.moxy.xml.MoxyXmlFeature;
-import org.glassfish.jersey.server.ResourceConfig;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 
-import org.glassfish.jersey.server.ServerProperties;
-import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import io.swagger.jaxrs.config.BeanConfig;
 
-public class SwaggerJaxrsConfig extends ResourceConfig {
+public class SwaggerJaxrsConfig extends HttpServlet {
 
-	public SwaggerJaxrsConfig() {
+	@Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+//      Bean de configuracion para Swagger UI
 		BeanConfig beanConfig = new BeanConfig();
-		beanConfig.setTitle("Swagger API Title");
-		beanConfig.setVersion("1.0.0");
-		beanConfig.setSchemes(new String[] { "http" });
-		beanConfig.setHost("http://localhost:9080/soapRest/swagger-ui");
-		beanConfig.setBasePath("/rest");
-		beanConfig.setResourcePackage("ar.com.bna.wsRest");
-		beanConfig.setScan(true);
-		property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, Boolean.TRUE);
-		packages("ar.com.bna.rest");
-		packages("ar.com.bna.wsRest");
-		register(MoxyJsonFeature.class);
-		// register(BadRequestExceptionMapper.class);
-		register(new MoxyJsonConfig().setFormattedOutput(true)
-				// Turn off BV otherwise the entities on server would be
-				// validated by MOXy as well.
-				.property(MarshallerProperties.BEAN_VALIDATION_MODE, BeanValidationMode.NONE).resolver());
-
-		register(MoxyXmlFeature.class);
-		register(RolesAllowedDynamicFeature.class);
+		beanConfig.setTitle("Swagger Cheques");
+        beanConfig.setVersion("1.0.0");
+        beanConfig.setSchemes(new String[]{"http"});
+        //Host donde buscara el swagger.json
+        beanConfig.setHost("localhost:9080");
+        beanConfig.setBasePath("soapRest/api");
+        //Posible implementacion de Package basado en nombre de Clase
+//        beanConfig.setResourcePackage(ChequeSOAPRestController.class.getPackage().getName());
+        //Implementacion de packages separados por coma para que scanee Servicios REST
+        beanConfig.setResourcePackage("ar.com.bna.rest,ar.com.bna.wsRest");
+        //Titulos y Descripciones para la Home de Swagger UI
+        beanConfig.setTitle("Swagger Json para JAX-RS");
+        beanConfig.setDescription("Documentacion Swagger para API REST (JAX-RS) Cheques");
+        beanConfig.setScan(true);
 	}
 }

@@ -40,6 +40,28 @@ public class ServicioCheques {
 
 		throw new CustomFault("No se encontro el Cheque con id: " + id);
 	}
+	
+	public Cheque modificarCheque(Cheque modificado) throws CustomFault {
+		for (Cheque cheque : cheques) {
+			if (cheque.getId().equals(modificado.getId())) {
+				cheque.setModificado(true);
+				return cheque;
+			}
+		}
+
+		throw new CustomFault("No se encontro el Cheque con id: " + modificado.getId());
+	}
+	
+	public void eliminarCheque(Long id) throws CustomFault {
+		for (Cheque cheque : cheques) {
+			if (cheque.getId().equals(id)) {
+				cheques.remove(cheque);
+				return;
+			}
+		}
+
+		throw new CustomFault("No se encontro el Cheque con id: " + id);
+	}
 
 	public List<Cheque> listarCheques() {
 		if(cheques.isEmpty())

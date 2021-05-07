@@ -4,12 +4,11 @@
 	version="3.0">
 	<display-name>Archetype Created Web Application</display-name>
 
-
+	<!-- Listener y Servlet para JAX-WS y generacion de WSDL -->
 	<listener>
 		<listener-class>
 			com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
 	</listener>
-
 	<servlet>
 		<servlet-name>JAXWSServlet</servlet-name>
 		<servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
@@ -17,34 +16,98 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>JAXWSServlet</servlet-name>
-		<url-pattern>/soapRest/*</url-pattern>
+		<url-pattern>/ws/*</url-pattern>
 	</servlet-mapping>
 
 
-	<servlet>
-		<servlet-name>jersey-servlet</servlet-name>
-		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-		<init-param>
-			<param-name>ar.com.bna.rest.RestApplication</param-name>
-			<param-value>ar.com.bna.rest.SwaggerJaxrsConfig</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>jersey-servlet</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
-	</servlet-mapping>
+	<!-- <context-param> -->
+	<!-- <param-name>resteasy.providers</param-name> -->
+	<!-- <param-value> -->
+	<!-- ar.com.bna.rest.RestApplication -->
+	<!-- </param-value> -->
+	<!-- </context-param> -->
+	<!-- <context-param> -->
+	<!-- <param-name>resteasy.scan</param-name> -->
+	<!-- <param-value>true</param-value> -->
+	<!-- </context-param> -->
+	<!-- <servlet> -->
+	<!-- <servlet-name>Jersey2Config</servlet-name> -->
+	<!-- <servlet-class>io.swagger.jaxrs.config.DefaultJaxrsConfig</servlet-class> -->
+	<!-- <init-param> -->
+	<!-- <param-name>api.version</param-name> -->
+	<!-- <param-value>1.0.0</param-value> -->
+	<!-- </init-param> -->
+	<!-- <init-param> -->
+	<!-- <param-name>swagger.api.basepath</param-name> -->
+	<!-- <param-value>http://localhost:9080/soapRest/api</param-value> -->
+	<!-- </init-param> -->
+	<!-- <load-on-startup>2</load-on-startup> -->
+	<!-- </servlet> -->
 
-	<filter>
-		<filter-name>ApiOriginFilter</filter-name>
-		<filter-class>ar.com.bna.rest.ApiOriginFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>ApiOriginFilter</filter-name>
-		<url-pattern>/rest/*</url-pattern>
-	</filter-mapping>
+	<!-- Servlet para Jersey y Swagger -->
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>jersey-servlet</servlet-name> -->
+<!-- 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class> -->
+<!-- 		<init-param> -->
+<!--             <param-name>jersey.config.server.provider.classnames</param-name> -->
+<!--         <param-value> -->
+<!--          ar.com.bna.rest.RestApplication, -->
+<!--             ar.com.bna.rest.ChequeRestController, -->
+<!--             ar.com.bna.wsRest.ChequeSOAPRestController -->
+<!--         </param-value> -->
+<!-- 		</init-param> -->
+<!-- 		<load-on-startup>1</load-on-startup> -->
+<!-- 	</servlet> -->
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>jersey-servlet</servlet-name> -->
+<!-- 		<url-pattern>/rest/*</url-pattern> -->
+<!-- 	</servlet-mapping> -->
+	
+<!-- 	<servlet> -->
+<!--         <servlet-name>SwaggerJaxrsConfig</servlet-name> -->
+<!--         <servlet-class>ar.com.bna.rest.SwaggerJaxrsConfig</servlet-class> -->
+<!--         <load-on-startup>2</load-on-startup> -->
+<!--     </servlet> -->
 
-	<session-config>
-		<session-timeout>5</session-timeout>
-	</session-config>
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>Jersey2Config</servlet-name> -->
+<!-- 		<servlet-class>io.swagger.jersey.config.JerseyJaxrsConfig</servlet-class> -->
+<!-- 		<init-param> -->
+<!-- 			<param-name>api.version</param-name> -->
+<!-- 			<param-value>1.0.0</param-value> -->
+<!-- 		</init-param> -->
+<!-- 		<init-param> -->
+<!-- 			<param-name>swagger.api.basepath</param-name> -->
+<!-- 			<param-value>http://localhost:9080/soapRest/api</param-value> -->
+<!-- 		</init-param> -->
+<!-- 		<load-on-startup>2</load-on-startup> -->
+<!-- 	</servlet> -->
+
+	<!-- <servlet> -->
+	<!-- <servlet-name>jersey</servlet-name> -->
+	<!-- <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> -->
+	<!-- <init-param> -->
+	<!-- <param-name>RestApplication</param-name> -->
+	<!-- <param-value>ar.com.bna.rest.RestApplication</param-value> -->
+	<!-- </init-param> -->
+	<!-- </servlet> -->
+
+	<!-- <servlet-mapping> -->
+	<!-- <servlet-name>jersey</servlet-name> -->
+	<!-- <url-pattern>/rest/*</url-pattern> -->
+	<!-- </servlet-mapping> -->
+
+	<!-- Filtro para Swagger UI -->
+<!-- 	<filter> -->
+<!-- 		<filter-name>ApiOriginFilter</filter-name> -->
+<!-- 		<filter-class>ar.com.bna.rest.ApiOriginFilter</filter-class> -->
+<!-- 	</filter> -->
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>ApiOriginFilter</filter-name> -->
+<!-- 		<url-pattern>/*</url-pattern> -->
+<!-- 	</filter-mapping> -->
+
+<!-- 	<session-config> -->
+<!-- 		<session-timeout>5</session-timeout> -->
+<!-- 	</session-config> -->
 </web-app>
