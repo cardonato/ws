@@ -1,0 +1,173 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Probando a ver si genera con Maven el Swagger",
+    "version" : "1.0.0",
+    "title" : "Swagger Maven Rest"
+  },
+  "basePath" : "/soapRest/api",
+  "tags" : [ {
+    "name" : "Cheque SOAP Rest Controller Modificado"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "paths" : {
+    "/chequesSR/agregarCheque" : {
+      "post" : {
+        "tags" : [ "Cheque SOAP Rest Controller Modificado" ],
+        "summary" : "agregarCheque",
+        "description" : "Agrega cheque",
+        "operationId" : "agregarCheque",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "cheque",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Cheque"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Cheque Agregado",
+            "schema" : {
+              "$ref" : "#/definitions/Cheque"
+            }
+          }
+        }
+      }
+    },
+    "/chequesSR/cheques" : {
+      "get" : {
+        "tags" : [ "Cheque SOAP Rest Controller Modificado" ],
+        "summary" : "cheques",
+        "description" : "Inicializa los Cheques Timo",
+        "operationId" : "getCheques",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Cheques Inicializados",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/chequesSR/eliminarCheque" : {
+      "delete" : {
+        "tags" : [ "Cheque SOAP Rest Controller Modificado" ],
+        "summary" : "eliminarCheque",
+        "description" : "Elimina Cheque",
+        "operationId" : "eliminarCheque",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "cheque",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Cheque"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Cheque Eliminado",
+            "schema" : {
+              "$ref" : "#/definitions/Cheque"
+            }
+          }
+        }
+      }
+    },
+    "/chequesSR/modificarCheque" : {
+      "put" : {
+        "tags" : [ "Cheque SOAP Rest Controller Modificado" ],
+        "summary" : "modificarCheque",
+        "description" : "Modifica Cheque",
+        "operationId" : "modificarCheque",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "cheque",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Cheque"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Cheque Modificado",
+            "schema" : {
+              "$ref" : "#/definitions/Cheque"
+            }
+          }
+        }
+      }
+    },
+    "/chequesSR/{id}" : {
+      "get" : {
+        "tags" : [ "Cheque SOAP Rest Controller Modificado" ],
+        "summary" : "id",
+        "description" : "Busca cheque por ID",
+        "operationId" : "buscarCheque",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Cheque by ID",
+            "schema" : {
+              "$ref" : "#/definitions/Cheque"
+            }
+          },
+          "404" : {
+            "description" : "Cheque no encontrado"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Cheque" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "idBanco" : {
+          "type" : "string"
+        },
+        "monto" : {
+          "type" : "number"
+        },
+        "dniBeneficiario" : {
+          "type" : "string"
+        },
+        "cmc7" : {
+          "type" : "string"
+        },
+        "fechaPago" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "modificado" : {
+          "type" : "boolean"
+        }
+      },
+      "description" : "Objeto Cheque"
+    }
+  }
+}
