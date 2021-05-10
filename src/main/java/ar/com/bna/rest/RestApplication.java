@@ -3,10 +3,6 @@ package ar.com.bna.rest;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import io.swagger.annotations.Info;
-import io.swagger.annotations.SwaggerDefinition;
-import io.swagger.jaxrs.config.BeanConfig;
-
 /**
  * @author Fernando
  * Clase que representa la App Rest con su respectiva configuracion para Swagger

@@ -8,6 +8,7 @@ import javax.jws.WebService;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HEAD;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -41,6 +42,15 @@ public class ChequeSOAPRestController {
 	@ApiOperation(value = "cheques", notes = "Inicializa Cheques", response = List.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Cheques Inicializados", response = List.class) })
 	public Response getCheques() {
+		ServicioCheques servicio = new ServicioCheques();
+		return Response.ok().entity(servicio.listarCheques()).build();
+	}
+	
+	@HEAD
+	@Path("/chequesHead")
+	@ApiOperation(value = "cheques", notes = "Inicializa Cheques", response = List.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Cheques Inicializados", response = List.class) })
+	public Response getChequesHead() {
 		ServicioCheques servicio = new ServicioCheques();
 		return Response.ok().entity(servicio.listarCheques()).build();
 	}
@@ -100,7 +110,7 @@ public class ChequeSOAPRestController {
 		ServicioCheques servicio = new ServicioCheques();
 		try {
 			servicio.eliminarCheque(cheque.getId());
-			return Response.status(Status.OK).entity("Cheque con ID: " + cheque.getId() + "eliminado").build();
+			return Response.status(Status.OK).entity("Cheque con ID: " + cheque.getId() + " eliminado").build();
 		}
 		catch (CustomFault e) {
 			return Response.status(Status.NOT_FOUND).entity("No se encontro el Cheque").build();
