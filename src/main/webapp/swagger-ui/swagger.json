@@ -1,19 +1,19 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "Probando a ver si genera con Maven el Swagger",
+    "description" : "Generando Swagger con Maven",
     "version" : "1.0.0",
-    "title" : "Swagger Maven Rest"
+    "title" : "Soap Rest Cheques"
   },
   "basePath" : "/soapRest/api",
   "tags" : [ {
-    "name" : "Cheque SOAP Rest Controller Modificado"
+    "name" : "Cheque SOAP Rest Controller"
   } ],
   "schemes" : [ "http", "https" ],
   "paths" : {
     "/chequesSR/agregarCheque" : {
       "post" : {
-        "tags" : [ "Cheque SOAP Rest Controller Modificado" ],
+        "tags" : [ "Cheque SOAP Rest Controller" ],
         "summary" : "agregarCheque",
         "description" : "Agrega cheque",
         "operationId" : "agregarCheque",
@@ -39,10 +39,31 @@
     },
     "/chequesSR/cheques" : {
       "get" : {
-        "tags" : [ "Cheque SOAP Rest Controller Modificado" ],
+        "tags" : [ "Cheque SOAP Rest Controller" ],
         "summary" : "cheques",
-        "description" : "Inicializa los Cheques Timo",
+        "description" : "Inicializa Cheques",
         "operationId" : "getCheques",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Cheques Inicializados",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/chequesSR/chequesHead" : {
+      "head" : {
+        "tags" : [ "Cheque SOAP Rest Controller" ],
+        "summary" : "cheques",
+        "description" : "Inicializa Cheques",
+        "operationId" : "getChequesHead",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "responses" : {
@@ -60,7 +81,7 @@
     },
     "/chequesSR/eliminarCheque" : {
       "delete" : {
-        "tags" : [ "Cheque SOAP Rest Controller Modificado" ],
+        "tags" : [ "Cheque SOAP Rest Controller" ],
         "summary" : "eliminarCheque",
         "description" : "Elimina Cheque",
         "operationId" : "eliminarCheque",
@@ -86,7 +107,7 @@
     },
     "/chequesSR/modificarCheque" : {
       "put" : {
-        "tags" : [ "Cheque SOAP Rest Controller Modificado" ],
+        "tags" : [ "Cheque SOAP Rest Controller" ],
         "summary" : "modificarCheque",
         "description" : "Modifica Cheque",
         "operationId" : "modificarCheque",
@@ -112,7 +133,7 @@
     },
     "/chequesSR/{id}" : {
       "get" : {
-        "tags" : [ "Cheque SOAP Rest Controller Modificado" ],
+        "tags" : [ "Cheque SOAP Rest Controller" ],
         "summary" : "id",
         "description" : "Busca cheque por ID",
         "operationId" : "buscarCheque",
