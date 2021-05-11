@@ -47,13 +47,7 @@
         "produces" : [ "application/json" ],
         "responses" : {
           "200" : {
-            "description" : "Cheques Inicializados",
-            "schema" : {
-              "type" : "array",
-              "items" : {
-                "type" : "object"
-              }
-            }
+            "description" : "Cheques Inicializados"
           }
         }
       }

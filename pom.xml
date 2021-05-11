@@ -8,12 +8,6 @@
 	<name>Soap Rest</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
 		<!-- Para Servlets y Web Dynamic Module -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -21,8 +15,7 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- Implementacion de Referencia de JAX-WS. 2.3.0 Para compatibilidad 
-			solo con Java 8 -->
+		<!-- Implementacion de Referencia de JAX-WS. 2.3.0 Para compatibilidad solo con Java 8 -->
 		<dependency>
 			<groupId>com.sun.xml.ws</groupId>
 			<artifactId>jaxws-ri</artifactId>
@@ -36,34 +29,13 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- Swagger, Swagger UI y uso con JAX-RS -->
-		<!-- <dependency> -->
-		<!-- <groupId>io.swagger</groupId> -->
-		<!-- <artifactId>swagger-jaxrs</artifactId> -->
-		<!-- <version>1.5.0</version> -->
-		<!-- </dependency> -->
+		<!-- Para uso de Anotaciones Swagger, Swagger UI y uso con JAX-RS -->
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-jersey2-jaxrs</artifactId>
 			<version>1.6.2</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>io.swagger</groupId> -->
-		<!-- <artifactId>swagger-annotations</artifactId> -->
-		<!-- <version>1.5.3</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>javax.ws.rs</groupId> -->
-		<!-- <artifactId>javax.ws.rs-api</artifactId> -->
-		<!-- <version>2.1.1</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>io.swagger</groupId> -->
-		<!-- <artifactId>swagger-jersey-jaxrs</artifactId> -->
-		<!-- <version>1.5.0</version> -->
-		<!-- </dependency> -->
-
 	</dependencies>
 	<build>
 		<plugins>
